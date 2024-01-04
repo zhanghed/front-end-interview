@@ -1,5 +1,12 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+let msg = ref(["a", "b"]);
+onMounted(() => {
+  setTimeout(() => {
+    msg.value.push("c");
+  }, 2000);
+});
 </script>
 
 <template>
@@ -12,7 +19,7 @@ import HelloWorld from "./components/HelloWorld.vue";
       height="125"
     />
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld :msg="msg" />
     </div>
   </header>
 </template>
